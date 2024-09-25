@@ -1,14 +1,14 @@
 export class EmpTypes {
   id: string;
-  firstName: string;
-  lastName: string;
+  fName: string;
+  lName: string;
   age: number;
   email: string;
 
   constructor() {
     this.id = '';
-    this.firstName = '';
-    this.lastName = '';
+    this.fName = '';
+    this.lName = '';
     this.age = 0;
     this.email = '';
   }

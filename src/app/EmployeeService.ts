@@ -13,8 +13,8 @@ const UserService = {
     const users = UserService.getAllUsers();
     const User: EmpTypes = {
       id: uuid().slice(0, 8),
-      firstName: '',
-      lastName: '',
+      fName: '',
+      lName: '',
       age: 0,
       email: '',
     };
