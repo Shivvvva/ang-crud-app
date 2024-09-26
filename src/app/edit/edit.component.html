@@ -1,5 +1,5 @@
 <div style="margin: 5rem; display: flex; justify-content: center">
-  <h1><b>Create new employee</b></h1>
+  <h1><b>Edit employee data</b></h1>
 </div>
 
 <div style="margin-left: 10rem; margin-right: 10rem">
@@ -12,14 +12,39 @@
         id="fname"
         formControlName="fname"
       />
+
       <small
         *ngIf="
           editForm.get('fname')?.hasError('required') &&
-          editForm.get('fname')?.touched
+          (editForm.get('fname')?.touched || editForm.get('fname')?.dirty)
         "
       >
         First name is required
       </small>
+
+      <small
+        *ngIf="
+          editForm.get('fname')?.hasError('pattern') &&
+          (editForm.get('fname')?.touched || editForm.get('fname')?.dirty)
+        "
+        >First name must only contain alphabetical characters</small
+      >
+      @if (!editForm.get('fname')?.hasError('pattern')) {
+      <small
+        *ngIf="
+          editForm.get('fname')?.hasError('minlength') &&
+          (editForm.get('fname')?.touched || editForm.get('fname')?.dirty)
+        "
+        >First name must contain atleast 3 characters <br
+      /></small>
+
+      <small
+        *ngIf="
+          editForm.get('fname')?.hasError('maxlength') &&
+          (editForm.get('fname')?.touched || editForm.get('fname')?.dirty)
+        "
+        >First name should not exceed 15 characters</small
+      >}
     </div>
 
     <div class="mb-3">
@@ -33,11 +58,35 @@
       <small
         *ngIf="
           editForm.get('lname')?.hasError('required') &&
-          editForm.get('lname')?.touched
+          (editForm.get('lname')?.touched || editForm.get('lname')?.dirty)
         "
       >
         Last name is required
       </small>
+
+      <small
+        *ngIf="
+          editForm.get('lname')?.hasError('pattern') &&
+          (editForm.get('lname')?.touched || editForm.get('lname')?.dirty)
+        "
+        >Last name must only contain alphabetical characters</small
+      >
+      @if (!editForm.get('lname')?.hasError('pattern')) {
+      <small
+        *ngIf="
+          editForm.get('lname')?.hasError('minlength') &&
+          (editForm.get('lname')?.touched || editForm.get('lname')?.dirty)
+        "
+        >Last name must contain atleast 3 characters <br
+      /></small>
+
+      <small
+        *ngIf="
+          editForm.get('lname')?.hasError('maxlength') &&
+          (editForm.get('lname')?.touched || editForm.get('lname')?.dirty)
+        "
+        >Last name should not exceed 15 characters</small
+      >}
     </div>
 
     <div class="mb-3">
@@ -74,10 +123,25 @@
         formControlName="age"
       />
       <small
-        *ngIf="editForm.get('age')?.invalid && editForm.get('age')?.touched"
+        *ngIf="
+          editForm.get('age')?.hasError('required') &&
+          editForm.get('age')?.touched
+        "
       >
         Age is required
       </small>
+      <small
+        *ngIf="
+          editForm.get('age')?.hasError('max') && editForm.get('age')?.touched
+        "
+        >Age must be less than 100</small
+      >
+      <small
+        *ngIf="
+          editForm.get('age')?.hasError('min') && editForm.get('age')?.touched
+        "
+        >Age must be greater than 0</small
+      >
     </div>
     <div class="d-grid gap-2" style="margin-top: 2rem">
       <button
