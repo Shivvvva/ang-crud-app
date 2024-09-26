@@ -1,0 +1,13 @@
+.errMsg {
+  display: flex;
+  justify-content: center;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+}
+
+.errPg {
+  margin: 20rem;
+}
