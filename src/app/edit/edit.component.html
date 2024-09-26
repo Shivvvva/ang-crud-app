@@ -100,7 +100,7 @@
       <small
         *ngIf="
           editForm.get('email')?.hasError('required') &&
-          editForm.get('email')?.touched
+          (editForm.get('email')?.touched || editForm.get('email')?.dirty)
         "
       >
         Email is required
@@ -108,7 +108,7 @@
       <small
         *ngIf="
           editForm.get('email')?.hasError('pattern') &&
-          editForm.get('email')?.touched
+          (editForm.get('email')?.touched || editForm.get('email')?.dirty)
         "
         >Please enter a valid email address</small
       >
@@ -125,20 +125,22 @@
       <small
         *ngIf="
           editForm.get('age')?.hasError('required') &&
-          editForm.get('age')?.touched
+          (editForm.get('age')?.touched || editForm.get('age')?.dirty)
         "
       >
         Age is required
       </small>
       <small
         *ngIf="
-          editForm.get('age')?.hasError('max') && editForm.get('age')?.touched
+          editForm.get('age')?.hasError('max') &&
+          (editForm.get('age')?.touched || editForm.get('age')?.dirty)
         "
         >Age must be less than 100</small
       >
       <small
         *ngIf="
-          editForm.get('age')?.hasError('min') && editForm.get('age')?.touched
+          editForm.get('age')?.hasError('min') &&
+          (editForm.get('age')?.touched || editForm.get('age')?.dirty)
         "
         >Age must be greater than 0</small
       >

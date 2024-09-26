@@ -100,7 +100,7 @@
       <small
         *ngIf="
           createForm.get('email')?.hasError('required') &&
-          createForm.get('email')?.touched
+          (createForm.get('email')?.touched || createForm.get('email')?.dirty)
         "
       >
         Email is required
@@ -108,7 +108,7 @@
       <small
         *ngIf="
           createForm.get('email')?.hasError('pattern') &&
-          createForm.get('email')?.touched
+          (createForm.get('email')?.touched || createForm.get('email')?.dirty)
         "
         >Please enter a valid email address</small
       >
@@ -125,7 +125,7 @@
       <small
         *ngIf="
           createForm.get('age')?.hasError('required') &&
-          createForm.get('age')?.touched
+          (createForm.get('age')?.touched || createForm.get('age')?.dirty)
         "
       >
         Age is required
@@ -133,14 +133,14 @@
       <small
         *ngIf="
           createForm.get('age')?.hasError('max') &&
-          createForm.get('age')?.touched
+          (createForm.get('age')?.touched || createForm.get('age')?.dirty)
         "
         >Age must be less than 100</small
       >
       <small
         *ngIf="
           createForm.get('age')?.hasError('min') &&
-          createForm.get('age')?.touched
+          (createForm.get('age')?.touched || createForm.get('age')?.dirty)
         "
         >Age must be greater than 0</small
       >
