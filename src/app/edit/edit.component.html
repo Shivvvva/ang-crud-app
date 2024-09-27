@@ -3,20 +3,20 @@
 </div>
 
 <div style="margin-left: 10rem; margin-right: 10rem">
-  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="editForm">
     <div class="mb-3">
-      <label for="fname" class="form-label">First Name</label>
+      <label for="fName" class="form-label">First Name</label>
       <input
         type="text"
         class="form-control"
-        id="fname"
-        formControlName="fname"
+        id="fName"
+        formControlName="fName"
       />
 
       <small
         *ngIf="
-          editForm.get('fname')?.hasError('required') &&
-          (editForm.get('fname')?.touched || editForm.get('fname')?.dirty)
+          editForm.get('fName')?.hasError('required') &&
+          (editForm.get('fName')?.touched || editForm.get('fName')?.dirty)
         "
       >
         First name is required
@@ -24,41 +24,41 @@
 
       <small
         *ngIf="
-          editForm.get('fname')?.hasError('pattern') &&
-          (editForm.get('fname')?.touched || editForm.get('fname')?.dirty)
+          editForm.get('fName')?.hasError('pattern') &&
+          (editForm.get('fName')?.touched || editForm.get('fName')?.dirty)
         "
         >First name must only contain alphabetical characters</small
       >
-      @if (!editForm.get('fname')?.hasError('pattern')) {
+      @if (!editForm.get('fName')?.hasError('pattern')) {
       <small
         *ngIf="
-          editForm.get('fname')?.hasError('minlength') &&
-          (editForm.get('fname')?.touched || editForm.get('fname')?.dirty)
+          editForm.get('fName')?.hasError('minlength') &&
+          (editForm.get('fName')?.touched || editForm.get('fName')?.dirty)
         "
         >First name must contain atleast 3 characters <br
       /></small>
 
       <small
         *ngIf="
-          editForm.get('fname')?.hasError('maxlength') &&
-          (editForm.get('fname')?.touched || editForm.get('fname')?.dirty)
+          editForm.get('fName')?.hasError('maxlength') &&
+          (editForm.get('fName')?.touched || editForm.get('fName')?.dirty)
         "
         >First name should not exceed 15 characters</small
       >}
     </div>
 
     <div class="mb-3">
-      <label for="lname" class="form-label">Last Name </label>
+      <label for="lName" class="form-label">Last Name </label>
       <input
         type="text"
         class="form-control"
-        id="lname"
-        formControlName="lname"
+        id="lName"
+        formControlName="lName"
       />
       <small
         *ngIf="
-          editForm.get('lname')?.hasError('required') &&
-          (editForm.get('lname')?.touched || editForm.get('lname')?.dirty)
+          editForm.get('lName')?.hasError('required') &&
+          (editForm.get('lName')?.touched || editForm.get('lName')?.dirty)
         "
       >
         Last name is required
@@ -66,24 +66,24 @@
 
       <small
         *ngIf="
-          editForm.get('lname')?.hasError('pattern') &&
-          (editForm.get('lname')?.touched || editForm.get('lname')?.dirty)
+          editForm.get('lName')?.hasError('pattern') &&
+          (editForm.get('lName')?.touched || editForm.get('lName')?.dirty)
         "
         >Last name must only contain alphabetical characters</small
       >
-      @if (!editForm.get('lname')?.hasError('pattern')) {
+      @if (!editForm.get('lName')?.hasError('pattern')) {
       <small
         *ngIf="
-          editForm.get('lname')?.hasError('minlength') &&
-          (editForm.get('lname')?.touched || editForm.get('lname')?.dirty)
+          editForm.get('lName')?.hasError('minlength') &&
+          (editForm.get('lName')?.touched || editForm.get('lName')?.dirty)
         "
         >Last name must contain atleast 3 characters <br
       /></small>
 
       <small
         *ngIf="
-          editForm.get('lname')?.hasError('maxlength') &&
-          (editForm.get('lname')?.touched || editForm.get('lname')?.dirty)
+          editForm.get('lName')?.hasError('maxlength') &&
+          (editForm.get('lName')?.touched || editForm.get('lName')?.dirty)
         "
         >Last name should not exceed 15 characters</small
       >}

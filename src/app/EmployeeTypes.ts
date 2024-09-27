@@ -1,12 +1,12 @@
 export class EmpTypes {
-  id: string;
+  id: number;
   fName: string;
   lName: string;
   age: number;
   email: string;
 
   constructor() {
-    this.id = '';
+    this.id = 0;
     this.fName = '';
     this.lName = '';
     this.age = 0;
