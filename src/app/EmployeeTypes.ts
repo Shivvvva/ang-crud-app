@@ -1,12 +1,14 @@
+import { v4 as uuid } from 'uuid';
+
 export class EmpTypes {
-  id: number;
+  id: string;
   fName: string;
   lName: string;
   age: number;
   email: string;
 
   constructor() {
-    this.id = 0;
+    this.id = uuid().slice(0, 8);
     this.fName = '';
     this.lName = '';
     this.age = 0;

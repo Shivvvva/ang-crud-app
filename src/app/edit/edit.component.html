@@ -3,11 +3,12 @@
 </div>
 
 <div style="margin-left: 10rem; margin-right: 10rem">
-  <form [formGroup]="editForm">
+  <form [formGroup]="editForm" (ngSubmit)="onEdit()">
     <div class="mb-3">
       <label for="fName" class="form-label">First Name</label>
       <input
         type="text"
+        value="{{ editEmp }}"
         class="form-control"
         id="fName"
         formControlName="fName"

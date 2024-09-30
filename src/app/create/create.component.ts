@@ -1,6 +1,7 @@
 import { Employees } from './../EmployeeList';
 import { EmpTypes } from './../EmployeeTypes';
 import { CommonModule } from '@angular/common';
+import { v4 as uuid } from 'uuid';
 import {
   FormBuilder,
   FormGroup,
@@ -28,8 +29,10 @@ export class CreateComponent {
       const parseData = JSON.parse(oldData);
       this.updatedEmp = parseData;
     }
+
     this.createForm = this.fb.group({
-      id: this.empObj.id,
+      id: uuid().slice(0, 8),
+
       fName: [
         this.empObj.fName,
         [
@@ -39,6 +42,7 @@ export class CreateComponent {
           Validators.maxLength(15),
         ],
       ],
+
       lName: [
         this.empObj.lName,
         [
@@ -48,6 +52,7 @@ export class CreateComponent {
           Validators.maxLength(15),
         ],
       ],
+
       email: [
         this.empObj.email,
         [
@@ -55,6 +60,7 @@ export class CreateComponent {
           Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$'),
         ],
       ],
+
       age: [
         this.empObj.age,
         [Validators.required, Validators.min(1), Validators.max(100)],
@@ -63,16 +69,12 @@ export class CreateComponent {
   }
 
   onSubmit() {
-    const oldData = localStorage.getItem('employees');
-    if (oldData != null) {
-      const parseData = JSON.parse(oldData);
-      this.createForm.controls['id'].setValue(parseData.length++);
-      this.updatedEmp.push(this.createForm.value);
-    } else {
-      this.updatedEmp.push(this.createForm.value);
-    }
+    this.empObj.fName = this.createForm.get('fName')?.value;
+    this.empObj.lName = this.createForm.get('lName')?.value;
+    this.empObj.age = this.createForm.get('age')?.value;
+    this.empObj.email = this.createForm.get('email')?.value;
+    this.updatedEmp.push(this.empObj);
     localStorage.setItem('employees', JSON.stringify(this.updatedEmp));
-    Employees.push(this.createForm.value);
     this.router.navigate(['/']);
   }
 }

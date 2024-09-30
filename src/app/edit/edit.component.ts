@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import {
-  FormControl,
+  FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
@@ -16,36 +17,71 @@ import { EmpTypes } from '../EmployeeTypes';
   styleUrl: './edit.component.css',
 })
 export class EditComponent {
+  router = new Router();
   editForm: FormGroup;
+  editEmp: EmpTypes[] = [];
   empObj: EmpTypes = new EmpTypes();
 
-  constructor() {
-    this.editForm = new FormGroup({
-      fname: new FormControl(this.empObj.fName, [
-        Validators.required,
-        Validators.pattern('[A-Za-zs]+$'),
-        Validators.minLength(3),
-        Validators.maxLength(15),
-      ]),
-      lname: new FormControl(this.empObj.lName, [
-        Validators.required,
-        Validators.pattern('[A-Za-zs]+$'),
-        Validators.minLength(3),
-        Validators.maxLength(15),
-      ]),
-      email: new FormControl(this.empObj.email, [
-        Validators.required,
-        Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$'),
-      ]),
-      age: new FormControl(this.empObj.age, [
-        Validators.required,
-        Validators.min(0),
-        Validators.max(100),
-      ]),
+  constructor(private fb: FormBuilder) {
+    const oldData = localStorage.getItem('employees');
+    if (oldData != null) {
+      const parseData = JSON.parse(oldData);
+      this.editEmp = parseData;
+    }
+
+    this.editForm = this.fb.group({
+      fName: [
+        localStorage.getItem('fName'),
+        [
+          Validators.required,
+          Validators.pattern('[A-Za-zs]+$'),
+          Validators.minLength(3),
+          Validators.maxLength(15),
+        ],
+      ],
+
+      lName: [
+        localStorage.getItem('lName'),
+        [
+          Validators.required,
+          Validators.pattern('[A-Za-zs]+$'),
+          Validators.minLength(3),
+          Validators.maxLength(15),
+        ],
+      ],
+
+      email: [
+        localStorage.getItem('email'),
+        [
+          Validators.required,
+          Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$'),
+        ],
+      ],
+
+      age: [
+        localStorage.getItem('age'),
+        [Validators.required, Validators.min(1), Validators.max(100)],
+      ],
     });
   }
 
-  onSubmit() {
-    console.log(this.editForm.valid);
-  }
+  onEdit = () => {
+    const index = this.editEmp.findIndex(
+      (emp) => emp.email === localStorage.getItem('email')
+    );
+    if (index !== -1) {
+      this.editEmp[index].fName = this.editForm.get('fName')?.value;
+      this.editEmp[index].lName = this.editForm.get('lName')?.value;
+      this.editEmp[index].age = this.editForm.get('age')?.value;
+      this.editEmp[index].email = this.editForm.get('email')?.value;
+      localStorage.setItem('employees', JSON.stringify(this.editEmp));
+    }
+    localStorage.removeItem('id');
+    localStorage.removeItem('fName');
+    localStorage.removeItem('lName');
+    localStorage.removeItem('age');
+    localStorage.removeItem('email');
+
+    this.router.navigate(['/']);
+  };
 }

@@ -33,6 +33,7 @@
         <td>{{ item.email }}</td>
         <td>
           <button
+            (click)="handleEdit(item)"
             type="button"
             class="btn btn-outline-primary"
             routerLink="edit"
@@ -56,6 +57,7 @@
           </button>
 
           <button
+            (click)="handleDelete(item.id)"
             style="margin-left: 5px"
             type="button"
             class="btn btn-outline-danger"
