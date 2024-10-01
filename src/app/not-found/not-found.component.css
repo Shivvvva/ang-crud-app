@@ -11,3 +11,7 @@
 .errPg {
   margin: 10rem;
 }
+
+.ntHd::before {
+  content: " 👾";
+}
