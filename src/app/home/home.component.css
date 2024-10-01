@@ -18,11 +18,18 @@ thead {
   z-index: 1;
 }
 
-th {
+thead th {
   padding: 20px;
   background-color: beige;
 }
 
 tr {
   padding: 10px;
+}
+
+.btnAdd {
+  background-color: rgb(169, 214, 255);
+  border-radius: 6px;
+  height: 50px;
+  width: 50px;
 }

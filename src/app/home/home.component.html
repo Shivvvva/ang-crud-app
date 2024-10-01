@@ -24,7 +24,7 @@
             text-align: center;
           "
         >
-          <th>Sr No</th>
+          <th>#</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Age</th>
@@ -37,7 +37,7 @@
         <!-- iterates over each element of newEmp array -->
         @for (item of newEmp; track $index) {
         <tr style="text-align: center; font-size: medium">
-          <td>{{ $index + 1 }}</td>
+          <th scope="row">{{ $index + 1 }}</th>
           <td>{{ capitalizeWord(item.fName) }}</td>
           <td>{{ capitalizeWord(item.lName) }}</td>
           <td>{{ item.age }}</td>
@@ -103,12 +103,7 @@
 </div>
 
 <div style="display: flex; justify-content: center">
-  <button
-    type="button"
-    class="btn btn-primary"
-    style="width: 200px"
-    routerLink="create"
-  >
+  <button type="button" class="btnAdd" style="width: 200px" routerLink="create">
     Add
   </button>
 </div>

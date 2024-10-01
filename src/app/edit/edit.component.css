@@ -7,3 +7,10 @@ small {
 .edtHd::after {
   content: " 📝";
 }
+
+.btnEdit {
+  background-color: rgb(169, 214, 255);
+  border-radius: 6px;
+  height: 50px;
+  width: 200px;
+}

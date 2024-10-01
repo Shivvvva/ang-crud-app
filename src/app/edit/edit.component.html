@@ -2,7 +2,7 @@
   <h1 class="edtHd"><b>Edit Page</b></h1>
 </div>
 
-<div style="margin-left: 10rem; margin-right: 10rem">
+<div style="margin-left: 20rem; margin-right: 20rem">
   <form [formGroup]="editForm">
     <div class="row">
       <div class="col mb-3">
@@ -148,11 +148,11 @@
         >Age must be greater than 0</small
       >
     </div>
-    <div class="d-grid gap-2" style="margin-top: 2rem">
+    <div style="margin-top: 5rem; display: flex; justify-content: center">
       <button
         (click)="onEdit()"
         type="submit"
-        class="btn btn-primary"
+        class="btnEdit"
         [disabled]="editForm.invalid"
       >
         Submit
