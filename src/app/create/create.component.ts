@@ -1,4 +1,3 @@
-import { Employees } from './../EmployeeList';
 import { EmpTypes } from './../EmployeeTypes';
 import { CommonModule } from '@angular/common';
 import { v4 as uuid } from 'uuid';
@@ -10,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create',
@@ -76,5 +76,11 @@ export class CreateComponent {
     this.updatedEmp.push(this.empObj);
     localStorage.setItem('employees', JSON.stringify(this.updatedEmp));
     this.router.navigate(['/']);
+
+    Swal.fire({
+      title: 'Submitted!',
+      text: 'Your form has been submitted successfully.',
+      icon: 'success',
+    });
   }
 }

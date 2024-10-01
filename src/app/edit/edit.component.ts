@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { EmpTypes } from '../EmployeeTypes';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit',
@@ -83,5 +84,11 @@ export class EditComponent {
     localStorage.removeItem('email');
 
     this.router.navigate(['/']);
+
+    Swal.fire({
+      title: 'Edited!',
+      text: 'Your form has been edited successfully.',
+      icon: 'success',
+    });
   };
 }
