@@ -1,0 +1,28 @@
+.homeHd::after {
+  content: " 🏠";
+}
+
+.emoji::after {
+  content: " 🫠";
+}
+
+.res-table {
+  max-height: 300px;
+  width: 100rem;
+  overflow-y: auto;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+th {
+  padding: 20px;
+  background-color: beige;
+}
+
+tr {
+  padding: 10px;
+}

@@ -4,3 +4,6 @@
 small {
   color: red;
 }
+.crtHd::after {
+  content: " 📝";
+}

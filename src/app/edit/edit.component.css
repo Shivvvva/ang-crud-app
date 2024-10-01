@@ -4,3 +4,6 @@
 small {
   color: red;
 }
+.edtHd::after {
+  content: " 📝";
+}

@@ -1,93 +1,95 @@
 <div style="margin: 5rem; display: flex; justify-content: center">
-  <h1><b>Edit employee data</b></h1>
+  <h1 class="edtHd"><b>Edit Page</b></h1>
 </div>
 
 <div style="margin-left: 10rem; margin-right: 10rem">
-  <form [formGroup]="editForm" (ngSubmit)="onEdit()">
-    <div class="mb-3">
-      <label for="fName" class="form-label">First Name</label>
-      <input
-        type="text"
-        value="{{ editEmp }}"
-        class="form-control"
-        id="fName"
-        formControlName="fName"
-      />
+  <form [formGroup]="editForm">
+    <div class="row">
+      <div class="col mb-3">
+        <label for="fName" class="form-label">First Name</label>
+        <input
+          type="text"
+          value="{{ editEmp }}"
+          class="form-control"
+          id="fName"
+          formControlName="fName"
+        />
 
-      <small
-        *ngIf="
-          editForm.get('fName')?.hasError('required') &&
-          (editForm.get('fName')?.touched || editForm.get('fName')?.dirty)
-        "
-      >
-        First name is required
-      </small>
+        <small
+          *ngIf="
+            editForm.get('fName')?.hasError('required') &&
+            (editForm.get('fName')?.touched || editForm.get('fName')?.dirty)
+          "
+        >
+          First name is required
+        </small>
 
-      <small
-        *ngIf="
-          editForm.get('fName')?.hasError('pattern') &&
-          (editForm.get('fName')?.touched || editForm.get('fName')?.dirty)
-        "
-        >First name must only contain alphabetical characters</small
-      >
-      @if (!editForm.get('fName')?.hasError('pattern')) {
-      <small
-        *ngIf="
-          editForm.get('fName')?.hasError('minlength') &&
-          (editForm.get('fName')?.touched || editForm.get('fName')?.dirty)
-        "
-        >First name must contain atleast 3 characters <br
-      /></small>
+        <small
+          *ngIf="
+            editForm.get('fName')?.hasError('pattern') &&
+            (editForm.get('fName')?.touched || editForm.get('fName')?.dirty)
+          "
+          >First name must only contain alphabetical characters</small
+        >
+        @if (!editForm.get('fName')?.hasError('pattern')) {
+        <small
+          *ngIf="
+            editForm.get('fName')?.hasError('minlength') &&
+            (editForm.get('fName')?.touched || editForm.get('fName')?.dirty)
+          "
+          >First name must contain atleast 3 characters <br
+        /></small>
 
-      <small
-        *ngIf="
-          editForm.get('fName')?.hasError('maxlength') &&
-          (editForm.get('fName')?.touched || editForm.get('fName')?.dirty)
-        "
-        >First name should not exceed 15 characters</small
-      >}
-    </div>
+        <small
+          *ngIf="
+            editForm.get('fName')?.hasError('maxlength') &&
+            (editForm.get('fName')?.touched || editForm.get('fName')?.dirty)
+          "
+          >First name should not exceed 15 characters</small
+        >}
+      </div>
 
-    <div class="mb-3">
-      <label for="lName" class="form-label">Last Name </label>
-      <input
-        type="text"
-        class="form-control"
-        id="lName"
-        formControlName="lName"
-      />
-      <small
-        *ngIf="
-          editForm.get('lName')?.hasError('required') &&
-          (editForm.get('lName')?.touched || editForm.get('lName')?.dirty)
-        "
-      >
-        Last name is required
-      </small>
+      <div class="col mb-3">
+        <label for="lName" class="form-label">Last Name </label>
+        <input
+          type="text"
+          class="form-control"
+          id="lName"
+          formControlName="lName"
+        />
+        <small
+          *ngIf="
+            editForm.get('lName')?.hasError('required') &&
+            (editForm.get('lName')?.touched || editForm.get('lName')?.dirty)
+          "
+        >
+          Last name is required
+        </small>
 
-      <small
-        *ngIf="
-          editForm.get('lName')?.hasError('pattern') &&
-          (editForm.get('lName')?.touched || editForm.get('lName')?.dirty)
-        "
-        >Last name must only contain alphabetical characters</small
-      >
-      @if (!editForm.get('lName')?.hasError('pattern')) {
-      <small
-        *ngIf="
-          editForm.get('lName')?.hasError('minlength') &&
-          (editForm.get('lName')?.touched || editForm.get('lName')?.dirty)
-        "
-        >Last name must contain atleast 3 characters <br
-      /></small>
+        <small
+          *ngIf="
+            editForm.get('lName')?.hasError('pattern') &&
+            (editForm.get('lName')?.touched || editForm.get('lName')?.dirty)
+          "
+          >Last name must only contain alphabetical characters</small
+        >
+        @if (!editForm.get('lName')?.hasError('pattern')) {
+        <small
+          *ngIf="
+            editForm.get('lName')?.hasError('minlength') &&
+            (editForm.get('lName')?.touched || editForm.get('lName')?.dirty)
+          "
+          >Last name must contain atleast 3 characters <br
+        /></small>
 
-      <small
-        *ngIf="
-          editForm.get('lName')?.hasError('maxlength') &&
-          (editForm.get('lName')?.touched || editForm.get('lName')?.dirty)
-        "
-        >Last name should not exceed 15 characters</small
-      >}
+        <small
+          *ngIf="
+            editForm.get('lName')?.hasError('maxlength') &&
+            (editForm.get('lName')?.touched || editForm.get('lName')?.dirty)
+          "
+          >Last name should not exceed 15 characters</small
+        >}
+      </div>
     </div>
 
     <div class="mb-3">
@@ -148,6 +150,7 @@
     </div>
     <div class="d-grid gap-2" style="margin-top: 2rem">
       <button
+        (click)="onEdit()"
         type="submit"
         class="btn btn-primary"
         [disabled]="editForm.invalid"

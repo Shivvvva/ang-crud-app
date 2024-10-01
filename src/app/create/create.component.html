@@ -1,92 +1,94 @@
 <div style="margin: 5rem; display: flex; justify-content: center">
-  <h1><b>Create new employee</b></h1>
+  <h1 class="crtHd"><b>Create Page</b></h1>
 </div>
 
 <div style="margin-left: 10rem; margin-right: 10rem">
   <form [formGroup]="createForm">
-    <div class="mb-3">
-      <label for="fName" class="form-label">First Name</label>
-      <input
-        type="text"
-        class="form-control"
-        id="fName"
-        formControlName="fName"
-      />
+    <div class="row">
+      <div class="col mb-3">
+        <label for="fName" class="form-label">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="fName"
+          formControlName="fName"
+        />
 
-      <small
-        *ngIf="
-          createForm.get('fName')?.hasError('required') &&
-          (createForm.get('fName')?.touched || createForm.get('fName')?.dirty)
-        "
-      >
-        First name is required
-      </small>
+        <small
+          *ngIf="
+            createForm.get('fName')?.hasError('required') &&
+            (createForm.get('fName')?.touched || createForm.get('fName')?.dirty)
+          "
+        >
+          First name is required
+        </small>
 
-      <small
-        *ngIf="
-          createForm.get('fName')?.hasError('pattern') &&
-          (createForm.get('fName')?.touched || createForm.get('fName')?.dirty)
-        "
-        >First name must only contain alphabetical characters</small
-      >
-      @if (!createForm.get('fName')?.hasError('pattern')) {
-      <small
-        *ngIf="
-          createForm.get('fName')?.hasError('minlength') &&
-          (createForm.get('fName')?.touched || createForm.get('fName')?.dirty)
-        "
-        >First name must contain atleast 3 characters <br
-      /></small>
+        <small
+          *ngIf="
+            createForm.get('fName')?.hasError('pattern') &&
+            (createForm.get('fName')?.touched || createForm.get('fName')?.dirty)
+          "
+          >First name must only contain alphabetical characters</small
+        >
+        @if (!createForm.get('fName')?.hasError('pattern')) {
+        <small
+          *ngIf="
+            createForm.get('fName')?.hasError('minlength') &&
+            (createForm.get('fName')?.touched || createForm.get('fName')?.dirty)
+          "
+          >First name must contain atleast 3 characters <br
+        /></small>
 
-      <small
-        *ngIf="
-          createForm.get('fName')?.hasError('maxlength') &&
-          (createForm.get('fName')?.touched || createForm.get('fName')?.dirty)
-        "
-        >First name should not exceed 15 characters</small
-      >}
-    </div>
+        <small
+          *ngIf="
+            createForm.get('fName')?.hasError('maxlength') &&
+            (createForm.get('fName')?.touched || createForm.get('fName')?.dirty)
+          "
+          >First name should not exceed 15 characters</small
+        >}
+      </div>
 
-    <div class="mb-3">
-      <label for="lName" class="form-label">Last Name </label>
-      <input
-        type="text"
-        class="form-control"
-        id="lName"
-        formControlName="lName"
-      />
-      <small
-        *ngIf="
-          createForm.get('lName')?.hasError('required') &&
-          (createForm.get('lName')?.touched || createForm.get('lName')?.dirty)
-        "
-      >
-        Last name is required
-      </small>
+      <div class="col mb-3">
+        <label for="lName" class="form-label">Last Name </label>
+        <input
+          type="text"
+          class="form-control"
+          id="lName"
+          formControlName="lName"
+        />
+        <small
+          *ngIf="
+            createForm.get('lName')?.hasError('required') &&
+            (createForm.get('lName')?.touched || createForm.get('lName')?.dirty)
+          "
+        >
+          Last name is required
+        </small>
 
-      <small
-        *ngIf="
-          createForm.get('lName')?.hasError('pattern') &&
-          (createForm.get('lName')?.touched || createForm.get('lName')?.dirty)
-        "
-        >Last name must only contain alphabetical characters</small
-      >
-      @if (!createForm.get('lName')?.hasError('pattern')) {
-      <small
-        *ngIf="
-          createForm.get('lName')?.hasError('minlength') &&
-          (createForm.get('lName')?.touched || createForm.get('lName')?.dirty)
-        "
-        >Last name must contain atleast 3 characters <br
-      /></small>
+        <small
+          *ngIf="
+            createForm.get('lName')?.hasError('pattern') &&
+            (createForm.get('lName')?.touched || createForm.get('lName')?.dirty)
+          "
+          >Last name must only contain alphabetical characters</small
+        >
+        @if (!createForm.get('lName')?.hasError('pattern')) {
+        <small
+          *ngIf="
+            createForm.get('lName')?.hasError('minlength') &&
+            (createForm.get('lName')?.touched || createForm.get('lName')?.dirty)
+          "
+          >Last name must contain atleast 3 characters <br
+        /></small>
 
-      <small
-        *ngIf="
-          createForm.get('lName')?.hasError('maxlength') &&
-          (createForm.get('lName')?.touched || createForm.get('lName')?.dirty)
-        "
-        >Last name should not exceed 15 characters</small
-      >}
+        <small
+          *ngIf="
+            createForm.get('lName')?.hasError('maxlength') &&
+            (createForm.get('lName')?.touched || createForm.get('lName')?.dirty)
+          "
+          >Last name should not exceed 15 characters</small
+        >}
+      </div>
     </div>
 
     <div class="mb-3">
